@@ -14,40 +14,48 @@ input('Seja bem vindo à lanchonete Anna Letícia Teixeira da Rocha\n'
       '|   201    |            Chá Gelado           |    4,00   |\n'
       '                                                          \n')
 
-novoPedido = 'S'
 
-def pedido(comida,preco):
-    global comidaNota += comida + ' \n'
-    global precoNota += preco
+preco = 0
+comida = ""
 
-while novoPedido == 'S':
-    atendente = int(input('Qual o código do seu pedido? \n'))
-    if atendente == 100:
-        pedido('Cachorro-quente', 9)
-    elif atendente == 101:
-        pedido('Cachorro-quente duplo', 11)
-    elif atendente == 102:
-        pedido('X-egg', 12)
-    elif atendente == 103:
-        pedido('X-salada', 13)
-    elif atendente == 104:
-        pedido('X-bacon', 14)
-    elif atendente == 105:
-        pedido('X-tudo', 17)
-    elif atendente == 200:
-        pedido('Refrigerante lata', 5)
-    elif atendente == 201:
-        pedido('Chá-gelado', 4)
+while True:
+    codigo = int(input('Qual o código do seu pedido? \n'))
+    if codigo == 100:
+        comida += 'Cachorro-quente'
+        preco += 9
+    elif codigo == 101:
+        comida += 'Cachorro-quente Duplo'
+        preco += 11
+    elif codigo == 102:
+        comida += 'X-Egg'
+        preco += 12
+    elif codigo == 103:
+        comida += 'X-Salada'
+        preco += 13
+    elif codigo == 104:
+        comida += 'X-Bacon'
+        preco += 14
+    elif codigo == 105:
+        comida += 'X-Tudo'
+        preco += 17
+    elif codigo == 200:
+        comida += 'Refrigerante Lata'
+        preco += 5
+    elif codigo == 201:
+        comida += 'Chá Gelado'
+        preco += 4
     else:
-        print('Digite um pedido válido!')
+        print('Código inválido!')
         continue
-    novoPedido = input('Deseja pedir algo mais? [S]sim [N]não \n')
-
-    if novoPedido == 'N':
+    continuar = input('Deseja fazer um novo pedido? [S] Sim  [N] Não \n')
+    if(continuar == 'N'):
         break
+    elif(continuar == 'S'):
+        comida += "\n"
+        continue
     else:
+        while continuar != 'S' and continuar != 'N':
+            continuar = input('Digite [S] para SIM e [N] para NÃO! \n')
         continue
 
-print('Seu pedido final foi: \n ' \
-             '{}, ficando um valor total de {}'.format(comidaNota, precoNota))
-
+print('Seu pedido foi: \n{} \nFicando um valor de R$:{} '.format(comida, preco))
